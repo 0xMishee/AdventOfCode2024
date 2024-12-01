@@ -1,1 +1,1 @@
-![Advent of Code Banner](pictures\adventOfCode.webp)
+![Advent of Code Banner](pictures\adventOfCode.png)
