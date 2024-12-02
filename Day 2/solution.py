@@ -11,18 +11,12 @@ def safe_report_count_fault_tolerance(row) -> int:
     if safe_report_count(row):
         return 1
 
-    safe: int = 0
-
-    if safe_report_count(row):
-        return 1
-
     for i in range(len(row)):
         fault_tolerated_report = row[:i] + row[i+1:]
         if safe_report_count(fault_tolerated_report):
-            safe += 1
-            break
+            return 1
 
-    return safe
+    return 0
 
 if __name__ == '__main__':
     safe_reports: int = 0
