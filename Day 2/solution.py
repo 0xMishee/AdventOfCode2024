@@ -11,18 +11,18 @@ def safe_report_count_fault_tolerance(row) -> int:
     if safe_report_count(row):
         return 1
 
-    safe: list = []
+    safe: int = 0
 
     if safe_report_count(row):
-        safe.append(row)
+        return 1
 
     for i in range(len(row)):
         fault_tolerated_report = row[:i] + row[i+1:]
         if safe_report_count(fault_tolerated_report):
-            safe.append(fault_tolerated_report)
+            safe += 1
             break
 
-    return len(safe)
+    return safe
 
 if __name__ == '__main__':
     safe_reports: int = 0
