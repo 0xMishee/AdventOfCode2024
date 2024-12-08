@@ -43,8 +43,10 @@ def solve_one(data: list[str]) -> int:
         next_row: int = current_row + move_row
         next_col: int = current_col + move_col
 
+        ## Replaced try/except IndexError with boundary checks for better reliability
         if 0 <= next_row < rows and 0 <= next_col < cols:
             if grid[next_row][next_col] == blockage:
+                # Cyclic rotation
                 current_index: int = directions.index(current_direction)
                 current_direction = directions[(current_index + 1) % 4]
             else:
@@ -55,6 +57,8 @@ def solve_one(data: list[str]) -> int:
 
     steps = len(unique_steps)
     return steps
+
+
 
 if __name__ == "__main__":
     with open("Day 6\\input.txt", "r", encoding="utf-8") as file:
