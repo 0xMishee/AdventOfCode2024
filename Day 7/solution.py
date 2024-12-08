@@ -52,7 +52,7 @@ def solve_one(data: list) -> int:
             cal_breakdown = re.findall(r'\d+|[+*]', cal)
             tmp_sum = int(cal_breakdown[0])
             
-            for i in range(1, len(cal_breakdown), 2):  # Step by 2 to process operators and operands
+            for i in range(1, len(cal_breakdown), 2):
                 operator = cal_breakdown[i]
                 operand = int(cal_breakdown[i + 1])
                 
