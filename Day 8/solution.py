@@ -1,8 +1,7 @@
-
-
 def solve_one(input_data: list[str]) -> int:
+    """Solve the first part of the problem."""
     antinodes: set = set()
-    frequencies: dict = {".":[]}
+    frequencies: dict = {".": []}
     antennas_locations: dict = {}
 
     grid: list[list[str]] = [list(line.strip()) for line in input_data]
@@ -18,10 +17,7 @@ def solve_one(input_data: list[str]) -> int:
             else:
                 if cell not in antennas_locations:
                     antennas_locations[cell] = []
-                    antennas_locations[cell].append((col, row))
-                elif cell in antennas_locations:
-                    antennas_locations[cell].append((col, row))
-
+                antennas_locations[cell].append((col, row))
 
     for v in antennas_locations.values():
         for a in v:
@@ -33,16 +29,14 @@ def solve_one(input_data: list[str]) -> int:
                 nx: int = b[0] - dx
                 ny: int = b[1] - dy
                 antinodes.add((nx, ny))
-    
+
     antinodes = {(x, y) for x, y in antinodes if 0 <= x < cols and 0 <= y < rows}
 
     return len(antinodes)
 
+
 if __name__ == "__main__":
-
-
     with open("Day 8\\input.txt", "r", encoding="utf-8") as file:
         data = file.readlines()
 
-
-    print("The amount of antinodes are: ", solve_one(data))
+    print("The amount of antinodes are:", solve_one(data))
